@@ -16,7 +16,9 @@ const uploadToS3 = async ({ name, path }: { name: string, path: string }) => {
 
   const clientOptions: S3ClientConfig = {
     region: env.AWS_S3_REGION,
-    forcePathStyle: env.AWS_S3_FORCE_PATH_STYLE
+    forcePathStyle: env.AWS_S3_FORCE_PATH_STYLE,
+    requestChecksumCalculation: "WHEN_REQUIRED",
+    responseChecksumValidation: "WHEN_REQUIRED",
   }
 
   if (env.AWS_S3_ENDPOINT) {
@@ -49,7 +51,7 @@ const uploadToS3 = async ({ name, path }: { name: string, path: string }) => {
 
   await new Upload({
     client,
-    params: params
+    params: params,
   }).done();
 
   console.log("Backup uploaded to S3...");
