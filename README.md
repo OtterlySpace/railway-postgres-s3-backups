@@ -4,7 +4,7 @@ A slightly moidified version of [railway/postgres-s3-backups](https://github.com
 
 Upgraded to Node 22 and Postgres 17 by default and with fixed support for Backblaze B2 and Cloudflare R2.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/I4zGrH)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/eIOwd0?referralCode=h-EWY1)
 
 ## Configuration
 
