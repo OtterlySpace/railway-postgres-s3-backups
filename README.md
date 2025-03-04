@@ -1,6 +1,8 @@
 # Postgres S3 backups
 
-A simple NodeJS application to backup your PostgreSQL database to S3 via a cron.
+A slightly moidified version of [railway/postgres-s3-backups](https://github.com/railwayapp-templates/postgres-s3-backups) to backup your PostgreSQL database to S3 via a cron.
+
+Upgraded to Node 22 and Postgres 17 by default and with fixed support for Backblaze B2 and Cloudflare R2.
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/I4zGrH)
 
@@ -33,3 +35,9 @@ A simple NodeJS application to backup your PostgreSQL database to S3 via a cron.
 - `SUPPORT_OBJECT_LOCK` - Enables support for buckets with object lock by providing an MD5 hash with the backup file.
 
 - `BACKUP_OPTIONS` - Add any valid pg_dump option, supported pg_dump options can be found [here](https://www.postgresql.org/docs/current/app-pgdump.html). Example: `--exclude-table=pattern`
+
+- `DISABLE_S3_CHECKSUM_VALIDATION` - Disables default S3 request checksum validation which is [not supported](https://github.com/aws/aws-sdk-js-v3/issues/6810) by some S3 providers like [Backblaze B2](https://www.backblaze.com/docs/cloud-storage-s3-compatible-api#unsupported-features) and [Cloudflare R2](https://developers.cloudflare.com/r2/api/s3/api/). This only impacts the communication between the application and the S3 service, not the backup itself.
+
+- `NODE_VERSION` - The Node version to use for the build stage. Default `22.14.0`
+
+- `PG_VERSION` - The Postgres version to use for the build stage. Default `17`

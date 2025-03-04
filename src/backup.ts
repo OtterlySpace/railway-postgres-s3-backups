@@ -17,8 +17,8 @@ const uploadToS3 = async ({ name, path }: { name: string, path: string }) => {
   const clientOptions: S3ClientConfig = {
     region: env.AWS_S3_REGION,
     forcePathStyle: env.AWS_S3_FORCE_PATH_STYLE,
-    requestChecksumCalculation: "WHEN_REQUIRED",
-    responseChecksumValidation: "WHEN_REQUIRED",
+    requestChecksumCalculation: env.DISABLE_S3_CHECKSUM_VALIDATION ? "WHEN_REQUIRED" : undefined,
+    responseChecksumValidation: env.DISABLE_S3_CHECKSUM_VALIDATION ?  "WHEN_REQUIRED" : undefined,
   }
 
   if (env.AWS_S3_ENDPOINT) {

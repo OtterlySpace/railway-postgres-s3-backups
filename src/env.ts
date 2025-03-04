@@ -52,4 +52,9 @@ export const env = envsafe({
     default: '',
     allowEmpty: true,
   }),
+  DISABLE_S3_CHECKSUM_VALIDATION: bool({
+    desc: 'Disables default S3 request checksum validation',
+    default: false,
+    allowEmpty: true,
+  }),
 })
